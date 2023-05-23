@@ -7,7 +7,6 @@ const app = express();
 app.use(morgan("combined"));
 app.use(bodyParsers.json());
 app.use(cors());
-app.listen(process.env.PORT || 8081);
 
 // get
 // post
@@ -20,12 +19,16 @@ app.get("/", (req, res) => {
   console.log("status");
 });
 
-app.get("status", (req, res) => {
+app.get("/status", (req, res) => {
   res.send({
     massage: "hello Node",
   });
   console.log("status");
 });
+
+app.listen(process.env.PORT || 8081);
+
+console.log("Hi Node");
 
 // app.listen(PORT, (error) => {
 //   error ? console.log(error) : console.log(`Listeing Port ${PORT}`);
@@ -38,5 +41,3 @@ app.get("status", (req, res) => {
 // router.get('/', (req, res) => {
 //   res.render(createPath('index'))
 // });
-
-console.log("Hi Node");
