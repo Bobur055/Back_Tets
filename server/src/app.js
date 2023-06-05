@@ -15,7 +15,9 @@ app.use(cors());
 // delete
 
 app.get("/", (req, res) => {
-  res.send("<h1>VUE Node.js</h1> ");
+  res.send(
+    `<h1>VUE Node.js</h1> <hr/> <a href="/status">Status</a> <hr/><a href="/register">Register</a>`
+  );
   console.log("status");
 });
 
@@ -26,6 +28,12 @@ app.get("/status", (req, res) => {
   console.log("status");
 });
 
+app.get("/register", (req, res) => {
+  res.send({
+    massage: `Hello ${req.body.email}! Your user was registerd ! Have fun`,
+  });
+  console.log("status");
+});
 app.listen(process.env.PORT || 8081);
 
 console.log("Hi Node");
